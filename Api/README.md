@@ -29,7 +29,7 @@ How To Build
 ### 1.初期化
 
 ```
-make env
+make env RESOURCE_PREFIX=${YOUR_PREFIX}
 ```
 
 ### 2.S3 初期化 & 構築
