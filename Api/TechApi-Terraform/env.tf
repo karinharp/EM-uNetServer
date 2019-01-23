@@ -6,7 +6,7 @@ variable "tfstate_object" {}
 
 variable "title"        {}
 variable "env"          {}
-
+variable "resource_prefix" {}
 
 provider "aws" {
   access_key = "${var.aws_access_key}"

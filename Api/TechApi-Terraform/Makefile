@@ -41,6 +41,7 @@ terraform.tfvars: Makefile.env
 	echo "tfstate_object = \"${CURRENT_DIR}\"" >> terraform.tfvars
 	echo "title          = \"${PROJECT_NAME}\"" >> terraform.tfvars
 	echo "env            = \"${PROJECT_ENV}\"" >> terraform.tfvars
+	echo "resource_prefix = \"${RESOURCE_PREFIX}\"" >> terraform.tfvars
 
 tf-init: terraform.tfvars
 	${TERRAFORM} init \

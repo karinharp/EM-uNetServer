@@ -16,7 +16,9 @@ API_NAME     ?= $(shell cat serverless.yml | yq '.functions.${API_FUNC}.events[0
 API_URL      ?= $(shell cat ApiInfo-${API_STAGE}.json | jq '.list[] | select (.url | endswith("${API_NAME}")) | .url '  | tr -d "\"")
 API_KEY      ?= ${shell cat ApiInfo-${API_STAGE}.json | jq '.key' | tr -d "\""}
 
-S3_BUCKET    ?= `echo ${PROJECT} | tr A-Z a-z`-data-${API_STAGE}
+RESOURCE_PREFIX ?= 
+
+S3_BUCKET    ?= ${RESOURCE_PREFIX}`echo ${PROJECT} | tr A-Z a-z`-data-${API_STAGE}
 
 # Session側から構築後の情報をコピーしておく必要あり。
 REDIS_API_URL ?= ${shell cat SessionApiInfo-${API_STAGE}.json | jq '.list[0].url' | tr -d "\"" } 
@@ -45,6 +47,7 @@ env:
 	@echo "API_FUNC      ?= ${API_FUNC}"     >> Makefile.env
 	@echo "API_FUNC_ARG  ?= ${API_FUNC_ARG}" >> Makefile.env
 	@echo "API_STAGE     ?= ${API_STAGE}"    >> Makefile.env
+	@echo "RESOURCE_PREFIX ?= ${RESOURCE_PREFIX}" >> Makefile.env
 
 Makefile.env: env
 
