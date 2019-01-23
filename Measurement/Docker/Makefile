@@ -1,6 +1,6 @@
 ########################################################################
 
-REPO_NAME ?= em-unetserver-measurement
+REPO_NAME ?= emns-measurement
 TARGET    ?= emns-measurement
 
 ########################################################################
